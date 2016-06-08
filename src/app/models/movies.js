@@ -34,7 +34,7 @@
         return win.fetch(url + '/' + id, {
           method: 'POST'
         }).then(function(response) {
-          return response.data;
+          return response.json();
         });
       };
 
@@ -42,7 +42,7 @@
         return win.fetch(url + (id ? '/' + id : ''), {
           method: 'GET'
         }).then(function(response) {
-          return response.data;
+          return response.json();
         });
       };
 
@@ -68,7 +68,7 @@
 
   }());
 
-  var observer = new win.Utilities().Observer();
+  var observer = new win.Utilities.Observer();
 
   Constructor.prototype.on = observer.on;
   Constructor.prototype.off = observer.off;

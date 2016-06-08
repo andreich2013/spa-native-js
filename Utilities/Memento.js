@@ -29,6 +29,6 @@
 
   }());
 
-  win.Utilities().Memento = Constructor;
+  win.Utilities.Memento = Constructor;
 
 }(window));

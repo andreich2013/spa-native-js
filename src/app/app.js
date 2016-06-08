@@ -14,6 +14,6 @@
 
   }());
 
-  win.app.models = new Constructor();
+  win.app = new Constructor();
 
 }(window));

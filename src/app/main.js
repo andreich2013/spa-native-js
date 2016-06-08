@@ -1,34 +1,53 @@
 (function(win) {
   'use strict';
 
-  win.app.router = new win.Utilities().Router();
+  win.app.router = new win.Utilities.Router();
 
-  var view;
+  var router = new window.Utilities.Router(),
+      templates = {
+        layout: window.Utilities.template(document.querySelector('#movies-template').innerHTML),
+        video: window.Utilities.template(document.querySelector('#movies-video-template').innerHTML),
+        source: window.Utilities.template(document.querySelector('#movies-video-source-template').innerHTML),
+        item: window.Utilities.template(document.querySelector('#movies-item-template').innerHTML)
+      },
+      view;
 
   function initView(params) {
-    view.destroy();
+    if(view) {
+      view.destroy();
+    }
 
     view = new win.app.views.Movies({
       el: win.document.querySelector('.spa-content'),
-      template: response.data,
-      id: params.id
+      templates: templates,
+      id: params[0]
     });
 
   }
 
-  fetch('src/app/templates/movies.html').then(function(response) {
-    win.app.router
-      .state({
-        title: 'movies.list',
-        url: '/movies',
-        success: initView
-      })
-      .state({
-        title: 'movies.item',
-        url: '/movies/:id',
-        success: initView
-      })
-      .otherwise('/movies');
+  router
+      .states
+      .splice(0, 0,
+          {
+              title: 'movies.list',
+              pattern: /^\/movies$/
+          },
+          {
+              title: 'movies.item',
+              pattern: /^\/movies\/([^\/?]+)$/
+          }
+      );
+
+  router.otherwise = '/movies';
+
+  router.on('state:movies.list', function(args) {
+      initView(args);
   });
+
+  router.on('state:movies.item', function(args) {
+      initView(args);
+  });
+
+  router.start();
 
 }(window));

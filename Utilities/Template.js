@@ -3,47 +3,36 @@
 
   var Constructor = (function() {
 
-    var DELIMETERS = /<%([^%>]+)?%>/g,
-        OPERATORS = /(^( )?(if|for|else|switch|case|break|{|}))(.*)?/g;
+    var DELIMETERS = /<%([^%>]+)?%>/g;
 
-    function add(line, js) {
-      var text = "";
+    return function(text) {
+      var html = text.replace(/\"/g, '\\"'),
+          source = '\"',
+          offset = 0,
+          match, code, fn;
 
-      js? (text += line.match(OPERATORS) ? line + '\n' : 'r.push(' + line + ');\n') :
-          (text += line != '' ? 'r.push("' + line.replace(/"/g, '\\"') + '");\n' : '');
-          
-      return text;
-    }
+      while(match = DELIMETERS.exec(html)) {
+        source += html.substring(offset, match.index) + "\"+" + match[1] + "+\"";
 
-    return function () {
+        offset = match.index + match[0].length;
+      }
 
-      return function() {
+      source += text.substring(offset) + "\"";
 
-        var code = 'var r=[];\n', 
-            cursor = 0, 
-            match,
-            fn;
+      code = source .replace(/\r/g, '\\r')
+                    .replace(/\t/g, '\\t')
+                    .replace(/\n/g, '\\n');
 
-        while(match = DELIMETERS.exec(html)) {
-          code += add(html.slice(cursor, match.index))(match[1], true);
-          cursor = match.index + match[0].length;
-        }
+      fn = new Function("a", 'return ' + code + ';');
 
-        code += add(html.substr(cursor, html.length - cursor));
-        code += 'return r.join("");';
-        
-        fn = new Function(code.replace(/[\r\t\n]/g, ''));
-
-        return function() {
-          return fn.apply(context || null, data)
-        };
-
+      return function(data, context) {
+        return fn.apply(context || null, [data]);
       };
-      
+
     };
 
   }());
 
-  win.Utilities().template = new Constructor();
+  win.Utilities.template = Constructor;
 
 }(window));

@@ -3,26 +3,68 @@
   <head>
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/src/assets/styles/main.css">
   </head>
   <body>
+
+    <script id="movies-template" type="text/html">
+        <section class="spa-movies-list-container">
+            <ul class="spa-movies-list"><% a.moviesList %></ul>
+        </section>
+        <% (a.video ? a.video : '') %>
+    </script>
+
+    <script id="movies-video-template" type="text/html">
+        <section class="spa-movies-video-container">
+            <video width="768" height="432" controls poster="/src/assets/images/<% a.images.placeholder %>">
+                <% a.sourcesList %>
+            </video>
+            <p class="spa-movies-video-title">
+                <% a.title %> (<% a.meta.releaseYear %>)
+            </p>
+            <p>
+                <span>Director: <% a.meta.directors[0].name %></span>
+                <span>Writers: <% a.meta.directors.map(function(item) { return item.name; }).join(', ') %></span>
+            </p>
+        </section>
+    </script>
+
+    <script id="movies-video-source-template" type="text/html">
+        <source src='<% a.url %>' type='video/<% a.type %>'>
+    </script>
+
+    <script id="movies-item-template" type="text/html">
+        <li>
+            <a href="<% '/movies/' + a.id %>">
+                <img src="/src/assets/images/<% a.images.cover %>" alt="">
+                <span class="spa-movies-item-title">
+                    <span><% a.title %></span>
+                    <span><% a.meta.releaseYear %></span>
+                </span>
+                
+            </a>
+        </li>
+    </script>
+
     <div class="spa-header"></div>
     <div class="spa-content"></div>
     <div class="spa-footer"></div>
 
-    <script src="Utilities/polyfills.js"></script>
+    <script src="/Utilities/polyfills.js"></script>
     
-    <script src="Utilities/Memento.js"></script>
-    <script src="Utilities/Observer.js"></script>
-    <script src="Utilities/Router.js"></script>
-    <script src="Utilities/Template.js"></script>
-    <script src="Utilities/Type.js"></script>
-    <script src="Utilities/main.js"></script>
+    <script src="/Utilities/main.js"></script>
+    <script src="/Utilities/Memento.js"></script>
+    <script src="/Utilities/Observer.js"></script>
+    <script src="/Utilities/Router.js"></script>
+    <script src="/Utilities/Template.js"></script>
+    <script src="/Utilities/Type.js"></script>
 
-    <script src="src/app/config.js"></script>
-    <script src="src/app/app.js"></script>
-    <script src="src/app/models/movies.js"></script>
-    <script src="src/app/views/movies.js"></script>
-    <script src="src/app/main.js"></script>
+    <script src="/src/app/app.js"></script>
+    <script src="/src/app/config.js"></script>
+    <script src="/src/app/models/movies.js"></script>
+    <script src="/src/app/views/movies.js"></script>
+    <script src="/src/app/main.js"></script>
+
+    
   </body>
 </html>

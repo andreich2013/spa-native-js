@@ -1,0 +1,122 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body {
+	font: normal normal 62.5%/1.4 verdana, arial, sans-serif;
+	color: #676767;
+}
+
+a,
+a:hover, 
+a:active, 
+a:visited, 
+a:focus {
+	text-decoration: none;
+	color: #676767;
+}
+
+.spa-movies-video-container,
+.spa-movies-list-container {
+	box-sizing: border-box;
+	margin: 0 auto;
+	padding: 20px 0;
+	width: 768px;
+}
+
+.spa-movies-video-container p {
+	display: block;
+	margin: 10px 0;
+	padding: 0 3%;
+	font-size: 1.4em;
+}
+
+.spa-movies-video-container p.spa-movies-video-title {
+	font-size: 2em;
+}
+
+.spa-movies-video-container p span {
+	display: block;
+}
+
+.spa-movies-video-container video {
+	display: block;
+}
+
+.spa-movies-list {
+	display: block;
+	text-align: center;
+}
+
+.spa-movies-list li {
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 20px;
+	width: 140px;
+}
+
+.spa-movies-list li a {
+	text-align: left;
+	font-size: 1.2em;
+}
+
+.spa-movies-list li a img {
+	max-width: 100%;
+	margin-bottom: 5px;
+	-webkit-box-shadow: 2px 3px 10px 0px rgba(0,0,0,0.6);
+	-moz-box-shadow: 2px 3px 10px 0px rgba(0,0,0,0.6);
+	box-shadow: 2px 3px 10px 0px rgba(0,0,0,0.6);
+}
+
+.spa-movies-list li a span {
+	display: block;
+}
+
+.spa-movies-item-title {
+	padding: 0 5%;
+}

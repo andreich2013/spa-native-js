@@ -1,0 +1,16 @@
+{
+  "name": "spa-native-js",
+  "description": "spa-native-js",
+  "author": "Scient Soft",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node src/server/main.js",
+    "test": "mocha --reporter spec test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "fs": "0.0.2",
+    "express": "~4.13.4",
+    "path": "~0.12.7"
+  }
+}

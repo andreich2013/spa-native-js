@@ -51,6 +51,6 @@
 
   }());
 
-  win.Utilities().type = new Constructor();
+  win.Utilities.type = new Constructor();
 
 }(window));

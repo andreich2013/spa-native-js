@@ -10,13 +10,14 @@
         return _instance;
       }
 
-      _instance = this;
+      _instance = {};
 
       return _instance;
     }
 
   }());
 
+  // win.Utilities = Constructor;
   win.Utilities = new Constructor();
 
 }(window));

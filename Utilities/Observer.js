@@ -57,6 +57,6 @@
 
   }());
 
-  win.Utilities().Observer = Constructor;
+  win.Utilities.Observer = Constructor;
 
 }(window));
