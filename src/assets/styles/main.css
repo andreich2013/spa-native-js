@@ -108,9 +108,13 @@ a:focus {
 .spa-movies-list li a img {
 	max-width: 100%;
 	margin-bottom: 5px;
+}
+
+.spa-movies-list li:hover a img,
+.spa-movies-list li.active a img {
 	-webkit-box-shadow: 2px 3px 10px 0px rgba(0,0,0,0.6);
 	-moz-box-shadow: 2px 3px 10px 0px rgba(0,0,0,0.6);
-	box-shadow: 2px 3px 10px 0px rgba(0,0,0,0.6);
+	box-shadow: 2px 3px 12px 2px rgba(0,0,0,0.6);
 }
 
 .spa-movies-list li a span {

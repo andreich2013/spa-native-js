@@ -25,8 +25,11 @@
 
       this.render = function() {
         var moviesList = this.model.list.map(function(item) {
-              return options.templates.item(item);
-            }),
+              return options.templates.item({
+                item: item,
+                model: this.model
+              });
+            }, this),
             video;
 
         if(this.model.item) {

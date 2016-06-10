@@ -4,6 +4,8 @@ var path = require('path');
 var express = require('express');
 
 var root = path.resolve(__dirname, '../../');
+
+// application server
 var app = express();
 
 app.use('/src',  express.static(root + '/src'));
@@ -17,7 +19,7 @@ app.listen(3000, function () {
   console.log('App Server running on port 3000');
 });
 
-
+// api server
 var api = express();
 
 api.use(function (req, res, next) {

@@ -34,12 +34,12 @@
     </script>
 
     <script id="movies-item-template" type="text/html">
-        <li>
-            <a href="<% '/movies/' + a.id %>">
-                <img src="/src/assets/images/<% a.images.cover %>" alt="">
+        <li class="<% (a.model.item && a.item.id === a.model.item.id ? 'active' : '') %>">
+            <a href="<% '/movies/' + a.item.id %>">
+                <img src="/src/assets/images/<% a.item.images.cover %>" alt="">
                 <span class="spa-movies-item-title">
-                    <span><% a.title %></span>
-                    <span><% a.meta.releaseYear %></span>
+                    <span><% a.item.title %></span>
+                    <span><% a.item.meta.releaseYear %></span>
                 </span>
                 
             </a>
